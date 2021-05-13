@@ -29,10 +29,10 @@ class Cap09ScelWebdriver1ApplicationTests {
 		Livro livro = new Livro("Sistemas Operacionais Modernos", "1234", "Tanenbaum");
 		lista.cadastrarLivro(livro);
 		
-		boolean isbnCadastrado = lista.ISBNCadastrado(livro.getIsbn());
+		boolean isbnCadastrado = lista.ISBNinvalido(livro.getIsbn());
 	
 		
-		assertEquals(true, isbnCadastrado);
+		assertEquals(false, isbnCadastrado);
 			
 	}
 	
@@ -41,10 +41,10 @@ class Cap09ScelWebdriver1ApplicationTests {
 		Livro livro = new Livro("Sistemas Operacionais Modernos", "", "Tanenbaum");
 		lista.cadastrarLivro(livro);
 		
-		boolean isbnBranco = lista.ISBNemBranco(livro.getIsbn());
+		boolean isbnBranco = lista.ISBNinvalido(livro.getIsbn());
 		
 		
-		assertEquals(true, isbnBranco);
+		assertEquals(false, isbnBranco);
 	
 	}
 	
@@ -53,7 +53,7 @@ class Cap09ScelWebdriver1ApplicationTests {
 		Livro livro = new Livro("", "1234", "Tanenbaum");
 		lista.cadastrarLivro(livro);
 		
-		boolean tituloBranco = lista.tituloEmBranco(livro.getTitulo());
+		boolean tituloBranco = lista.TituloInvalido(livro.getTitulo());
 		
 		
 		assertEquals(true, tituloBranco);
@@ -65,7 +65,7 @@ class Cap09ScelWebdriver1ApplicationTests {
 		Livro livro = new Livro("Sistemas Operacionais Modernos", "1234", "");
 		lista.cadastrarLivro(livro);
 		
-		boolean autorBranco = lista.autorEmBranco(livro.getAutor());
+		boolean autorBranco = lista.AutorInvalido(livro.getAutor());
 		
 		
 		assertEquals(true, autorBranco);
