@@ -71,5 +71,34 @@ class Cap09ScelWebdriver1ApplicationTests {
 		assertEquals(true, autorBranco);
 		
 	}
+	
+	@Test
+	public void CT06_CadastrarISBNInvalido() {
+		Livro livro = new Livro("Sistemas Operacionais Modernos", "12345", "Tanenbaum");
+		lista.cadastrarLivro(livro);
+		
+		boolean isbnInvalido = lista.ISBNinvalido(livro.getIsbn());
+		
+		assertEquals(false, isbnInvalido);
+	}
 
+	@Test
+	public void CT07_CadastrarTituloInvalido() {
+		Livro livro = new Livro("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", "1234", "Tanenbaum");
+		lista.cadastrarLivro(livro);
+		
+		boolean tituloInvalido = lista.TituloInvalido(livro.getTitulo());
+		
+		assertEquals(true, tituloInvalido);
+	}
+	
+	@Test
+	public void CT08_CadastrarAutorInvalido() {
+		Livro livro = new Livro("Sistemas Operacionais Modernos", "1234", "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		lista.cadastrarLivro(livro);
+		
+		boolean autorInvalido = lista.AutorInvalido(livro.getAutor());
+		
+		assertEquals(true, autorInvalido);
+	}
 }
